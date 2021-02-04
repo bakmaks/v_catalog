@@ -1,0 +1,5 @@
+/v_catalog/local_settings.py
+/v_catalog/product_settings.py
+/venv/
+/.idea
+/db.sqlite3

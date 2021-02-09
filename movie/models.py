@@ -1,3 +1,4 @@
+from django.core import validators
 from django.db import models
 from django.utils.text import slugify
 import time
@@ -9,11 +10,19 @@ from .utils import code_str
 class AbstractVideo(models.Model):
     ru_title = models.CharField(max_length=200, verbose_name='Название', blank=False)
     en_title = models.CharField(max_length=200, verbose_name='Оригинальное Название')
-    product_year = models.PositiveSmallIntegerField(verbose_name='Год', default=2020)
+    product_year = models.PositiveSmallIntegerField(
+        verbose_name='Год', default=2020, validators=[validators.MinValueValidator(1900),
+                                                      validators.MaxValueValidator(2100)])
     slug = models.SlugField(max_length=100, unique=True)
     country = models.CharField(verbose_name='Старна', max_length=50)
     description = models.TextField(verbose_name='Описание', max_length=1000)
     poster = models.ImageField(upload_to='images/%Y/%m/%d/')
+    IMDB_rating = models.DecimalField(verbose_name='IMDB', max_digits=1, decimal_places=1,
+                                      validators=[validators.MaxValueValidator(9.9),
+                                                  validators.MinValueValidator(0.0)])
+    KPoisk_rating = models.DecimalField(verbose_name='Кинопоиск', max_digits=1, decimal_places=1,
+                                        validators=[validators.MaxValueValidator(9.9),
+                                                    validators.MinValueValidator(0.0)])
 
     class Meta:
         abstract = True

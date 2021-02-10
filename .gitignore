@@ -4,3 +4,5 @@
 /.idea
 /db.sqlite3
 /movie/migrations/0001_initial.py
+/media/
+/source/

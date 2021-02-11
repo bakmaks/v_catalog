@@ -6,3 +6,4 @@
 /movie/migrations/0001_initial.py
 /media/
 /source/*
+/movie/migrations/0002_auto_20210211_1107.py

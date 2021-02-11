@@ -23,7 +23,7 @@ class AbstractVideo(models.Model):
     KPoisk_rating = models.DecimalField(verbose_name='Кинопоиск', default=0.0, blank=True, max_digits=2,
                                         decimal_places=1, validators=[validators.MaxValueValidator(9.9),
                                                                       validators.MinValueValidator(0.0)])
-    category = models.ManyToManyField('Category', blank=True)
+    categories = models.ManyToManyField('Category', blank=True, verbose_name='список жанров')
 
     class Meta:
         abstract = True

@@ -9,21 +9,22 @@ from .utils import code_str
 # ----------Абстрактная модель для создания моделей Фильмов и сериалов-----------------------------------------
 class AbstractVideo(models.Model):
     ru_title = models.CharField(max_length=200, verbose_name='Название', blank=False)
-    en_title = models.CharField(max_length=200, verbose_name='Оригинальное Название', default='не известно', blank=True)
-    product_year = models.PositiveSmallIntegerField(
-        verbose_name='Год', default=2020, blank=True, validators=[validators.MinValueValidator(1900),
-                                                                  validators.MaxValueValidator(2100)])
+    title = models.CharField(max_length=200, verbose_name='Оригинальное Название', default='не известно', blank=True)
     slug = models.SlugField(max_length=100, blank=True, unique=True)
     country = models.CharField(verbose_name='Старна', blank=True, max_length=50)
     description = models.TextField(verbose_name='Описание', blank=True, max_length=1000)
     poster = models.ImageField(upload_to='images/%Y/%m/%d/', blank=True)
+    categories = models.ManyToManyField('Category', blank=True, verbose_name='список жанров')
+    verified = models.BooleanField(verbose_name='Проверено', default=False)
     IMDB_rating = models.DecimalField(verbose_name='IMDB', blank=True, default=0.0, max_digits=2, decimal_places=1,
                                       validators=[validators.MaxValueValidator(9.9),
                                                   validators.MinValueValidator(0.0)])
     KPoisk_rating = models.DecimalField(verbose_name='Кинопоиск', default=0.0, blank=True, max_digits=2,
                                         decimal_places=1, validators=[validators.MaxValueValidator(9.9),
                                                                       validators.MinValueValidator(0.0)])
-    categories = models.ManyToManyField('Category', blank=True, verbose_name='список жанров')
+    product_year = models.PositiveSmallIntegerField(verbose_name='Год', default=2020,
+                                                    validators=[validators.MinValueValidator(1900),
+                                                                validators.MaxValueValidator(2100)])
 
     class Meta:
         abstract = True
@@ -43,7 +44,7 @@ class Category(models.Model):
     slug = models.SlugField(max_length=100, unique=True, blank=True)
 
     class Meta:
-        verbose_name = 'Категория'
+        verbose_name = 'Категория(ю)'
         verbose_name_plural = 'Категории'
 
     def __str__(self):

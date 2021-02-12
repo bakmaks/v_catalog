@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from .models import Film
 
 
 def index(request):
-    return render(request, 'test.html')
+    films = Film.objects.all()
+    return render(request, 'movie/base_films_list.html', {'films': films})

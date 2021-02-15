@@ -10,10 +10,10 @@
                     <strong class="d-inline-block text-info">{{ film }}</strong>
                     <i class="mb-0 text-primary">{{ film.title }}</i>
                     <div class="pb-2 text-primary border-bottom border-success">{{ film.country }}</div>
-                    <i class="mb-auto pt-2 text-muted">{{ film.description }}</i>
+                    <i class="mb-auto pt-2 text-muted">{{ film.description | truncatechars:150}}</i>
                     <a href="https://getbootstrap.com/docs/5.0/examples/blog/#" class="stretched-link">Редактировать</a>
                 </div>
-                <div class="col-auto d-none d-lg-block">
+                <div class="col-auto d-none d-xl-block">
                     {% if film.poster %}
                         <img src="{{ film.poster.url}}" height="250" alt="">
                     {%endif%}

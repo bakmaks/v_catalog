@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 # ----------Абстрактная модель для создания моделей Фильмов и сериалов-----------------------------------------
 class AbstractVideo(models.Model):
     ru_title = models.CharField(max_length=200, verbose_name='Название', blank=False)
-    title = models.CharField(max_length=200, verbose_name='Оригинальное Название', default='не известно', blank=True)
+    title = models.CharField(max_length=200, verbose_name='Оригинальное Название', default='----------', blank=True)
     slug = models.SlugField(max_length=100, blank=True, unique=True)
     country = models.CharField(verbose_name='Старна', blank=True, max_length=50)
     description = models.TextField(verbose_name='Описание', blank=True, max_length=1000)

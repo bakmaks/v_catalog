@@ -2,8 +2,11 @@ from django.core import validators
 from django.db import models
 from django.utils.text import slugify
 import time
+import logging
 
 from .utils import code_str
+
+logger = logging.getLogger(__name__)
 
 
 # ----------Абстрактная модель для создания моделей Фильмов и сериалов-----------------------------------------

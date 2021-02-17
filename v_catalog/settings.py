@@ -11,8 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 from pathlib import Path
-from django.utils.log import RequireDebugFalse, RequireDebugTrue
-import logging
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -100,60 +99,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': True,
-    'filters': {
-        'require_debug_false': {
-            '()': 'django.utils.log.RequireDebugFalse',
-        },
-        'require_debug_true': {
-            ' () ': 'django.utils.log.RequireDebugTrue',
-        }
-    },
-    'formatters': {
-        'simple': {
-            'format': '[%(asctime)s] %(name)s | %(filename)s %(levelname)s: %(message)s',
-            'datefmt': '%Y.%m.%d %H:%M:%S',
-        }
-    },
-    'handlers': {
-        'console_dev': {
-            'class': 'logging.StreamHandler',
-            'formatter': 'simple',
-            'filters': ['require_debug_true'],
-        },
-        'console_prod': {
-            'class': 'logging.StreamHandler',
-            'formatter': 'simple',
-            'level': 'ERROR',
-            'filters': ['require_debug_false'],
-        },
-        'file': {
-            'class': 'logging.handlers.RotatingFileHandler',
-            'filename': 'D:/DjangoProjects/v_catalog/logs/logsdjango-site.log',
-            'maxBytes': 1048576,
-            'backupCount': 10,
-            'formatter': 'simple',
-        },
-    },
-    'loggers': {
-        'movie': {
-            'handlers': ['console_dev'],
-            'level': 'DEBUG'
-        },
-        'django': {
-            'handlers': ['console_dev', 'console_prod'],
-            'level': 'INFO',
-        },
-        'django.server': {
-            'handlers': ['file'],
-            'level': 'INFO',
-            'propagate': True,
-        }
-    }
-}
 
 # Если локаль, то грузится local_settings.py иначе грузится product_settings.py
 try:

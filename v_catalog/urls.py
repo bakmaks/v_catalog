@@ -19,10 +19,14 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
+from django.views.generic.base import RedirectView
+from movie import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('movie.urls'))
+    path('movie/', include('movie.urls')),
+    # Перенаправление на главную страницу
+    path('', RedirectView.as_view(url='movie/film/', permanent=True)),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:

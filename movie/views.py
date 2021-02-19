@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 
 
 def index(request):
-    logger.debug('Hello')
+    # logger.debug('Hello')
     films = Film.objects.all()
     return render(request, 'movie/base_films_list.html', {'films': films})
 

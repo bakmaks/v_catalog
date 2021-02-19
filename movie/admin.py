@@ -8,6 +8,7 @@ from .models import Film, TVSeries, Category
 class FilmAdmin(admin.ModelAdmin):
     save_as = True
     save_on_top = True
+
     list_display = ('get_poster', 'ru_title', 'title', 'product_year', 'country', 'IMDB_rating', 'KPoisk_rating',
                     'verified')
     list_display_links = ('ru_title', 'title')
@@ -24,6 +25,9 @@ class FilmAdmin(admin.ModelAdmin):
 
 @admin.register(TVSeries)
 class TVSeriesAdmin(admin.ModelAdmin):
+    save_as = True
+    save_on_top = True
+
     list_display = ('get_poster', 'ru_title', 'title', 'product_year', 'country', 'IMDB_rating', 'KPoisk_rating',
                     'number_of_episodes', 'season_number', 'verified')
     list_display_links = ('ru_title', 'title')

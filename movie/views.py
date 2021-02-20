@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 def index(request):
     # logger.debug('Hello')
     films = Film.objects.all()
-    return render(request, 'movie/base_films_list.html', {'films': films})
+    return render(request, 'movie/cards_list.html', {'films': films})
 
 
 # def redirect_to_movie(request):

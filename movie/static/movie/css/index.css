@@ -1,7 +1,13 @@
-.bg-dark{
+.m-bg-dark{
     background-color: #212529;
 }
-.btn-and-bg-color{
-    color: rgba(255,255,255, .55);
-    border-color: rgba(255,255,255, .1);
+/*.btn-and-bg-color{*/
+/*    color: rgba(255,255,255, .55);*/
+/*    border-color: rgba(255,255,255, .1);*/
+/*}*/
+/*Название страны производства*/
+.m-orig-country{
+    font-size: 14px;
+    font-style: italic;
+    color: hsla(0,0%,100%,.6);
 }

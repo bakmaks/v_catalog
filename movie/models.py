@@ -12,19 +12,20 @@ logger = logging.getLogger(__name__)
 # ----------Абстрактная модель для создания моделей Фильмов и сериалов-----------------------------------------
 class AbstractVideo(models.Model):
     ru_title = models.CharField(max_length=200, verbose_name='Название', blank=False)
-    title = models.CharField(max_length=200, verbose_name='Оригинальное Название', default='----------', blank=True)
-    slug = models.SlugField(max_length=100, blank=True, unique=True)
-    country = models.CharField(verbose_name='Старна', blank=True, max_length=50)
-    description = models.TextField(verbose_name='Описание', blank=True, max_length=1000)
+    title = models.CharField(max_length=200, verbose_name='Оригинальное Название',
+                             blank=True, null=True)
+    slug = models.SlugField(max_length=100, blank=True, unique=True, null=True)
+    country = models.CharField(verbose_name='Старна', blank=True, max_length=50, null=True)
+    description = models.TextField(verbose_name='Описание', blank=True, max_length=1000, null=True)
     poster = models.ImageField(upload_to='images/%Y/%m/%d/', blank=True)
     categories = models.ManyToManyField('Category', blank=True, verbose_name='список жанров')
     verified = models.BooleanField(verbose_name='Проверено', default=False)
     IMDB_rating = models.DecimalField(verbose_name='IMDB', blank=True, default=0.0, max_digits=2, decimal_places=1,
                                       validators=[validators.MaxValueValidator(9.9),
-                                                  validators.MinValueValidator(0.0)])
+                                                  validators.MinValueValidator(0.0)], null=True)
     KPoisk_rating = models.DecimalField(verbose_name='Кинопоиск', default=0.0, blank=True, max_digits=2,
                                         decimal_places=1, validators=[validators.MaxValueValidator(9.9),
-                                                                      validators.MinValueValidator(0.0)])
+                                                                      validators.MinValueValidator(0.0)], null=True)
     product_year = models.PositiveSmallIntegerField(verbose_name='Год', default=2020,
                                                     validators=[validators.MinValueValidator(1900),
                                                                 validators.MaxValueValidator(2100)])

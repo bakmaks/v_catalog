@@ -3,43 +3,24 @@
 {% load static %}
 
 {% block content %}
+
 <!--Карточка фильма-->
-
     {% for film in films  %}
-<!--    {% if film.season_number %}-->
-<!--        <p class="max-test-border-color">это сериал</p>-->
-<!--    {% else %}-->
-<!--        <p class="max-test-border-color">это фильм</p>-->
-<!--    {% endif %}-->
-
 <!--    Колонка карточки фильма-->
         <div class="col-lg-6 mt-2">
             <div class="card-container border rounded">
 <!--        Ряд с названием, годом, сезоном, индикатором просмотра-->
-                <div class="row g-0 px-2 py-2 justify-content-between border-bottom border-success">
-<!--                Название фильма и год-->
-                    <div class="col-md-9">
-                        <strong class="text-info">
-                            {{ film.ru_title | truncatechars:50 }} ({{film.product_year}})
-                        </strong>
-                    </div>
-<!--                Колонка с номером сезона и номером серии-->
-                    <div class="col-md-3">
-                        <div class="row g-0 text-info">
-<!--                        номер сезона-->
-                            <div class="col">
-                                <i class="bi bi-film"> 10</i>
-                            </div>
-<!--                        номер серии-->
-                            <div class="col">
-                                <i class="bi bi-eye"> 10</i>
-                            </div>
-<!--                        буду смотреть-->
-                            <div class="col-auto">
-                                <i class="bi bi-bookmark-heart"></i>
-                            </div>
-                        </div>
-                    </div>
+
+                <div class="row g-0 px-2 py-2 border-bottom border-success">
+
+                    {% if not film.season_number %}
+<!--                    Название фильма и год-->
+                        {% include "movie/include/anonim_film_header.html" %}
+                    {% else %}
+<!--                    название сериала и год-->
+                        {% include "movie/include/anonim_tvseries_header.html" %}
+                    {% endif %}
+
                 </div>
             </div>
         </div>

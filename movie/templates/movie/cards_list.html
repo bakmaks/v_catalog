@@ -5,7 +5,7 @@
 {% block content %}
 
 <!--Карточка фильма-->
-    {% for film in films  %}
+    {% for video in videos  %}
 <!--    Колонка карточки фильма-->
         <div class="col-lg-6 mt-2">
             <div class="card-container border rounded">
@@ -13,7 +13,7 @@
 
                 <div class="row g-0 px-2 py-2 border-bottom border-success">
 
-                    {% if not film.season_number %}
+                    {% if not video.season_number %}
 <!--                    Название фильма и год-->
                         {% include "movie/include/anonim_film_header.html" %}
                     {% else %}

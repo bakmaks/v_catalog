@@ -1,6 +1,6 @@
 <div class="col-md-9">
     <strong class="text-info">
-        {{ film.ru_title | truncatechars:50 }} ({{film.product_year}})
+        {{ video.ru_title | truncatechars:50 }} ({{video.product_year}})
     </strong>
 </div>
 <!--Колонка с номером сезона и номером серии-->
@@ -8,7 +8,7 @@
     <div class="row g-0 text-info text-center">
 <!--    номер сезона-->
         <div class="col">
-            <i class="bi bi-film"> 10</i>
+            <i class="bi bi-film"> {{video.number_of_episodes}}</i>
         </div>
 <!--    номер серии-->
 <!--        <div class="col">-->
